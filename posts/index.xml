@@ -4,7 +4,14 @@
         <link>http://0w0.pub/posts/</link>
         <description>所有文章 | ByLCY Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>liaochangyu@hotmail.com (ByLCY)</managingEditor>
-            <webMaster>liaochangyu@hotmail.com (ByLCY)</webMaster><lastBuildDate>Tue, 22 Sep 2020 11:56:16 &#43;0800</lastBuildDate><atom:link href="http://0w0.pub/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>liaochangyu@hotmail.com (ByLCY)</webMaster><lastBuildDate>Wed, 30 Sep 2020 23:11:20 &#43;0800</lastBuildDate><atom:link href="http://0w0.pub/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>读书笔记 编译原理 第一章 引论</title>
+    <link>http://0w0.pub/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BC%95%E8%AE%BA/</link>
+    <pubDate>Wed, 30 Sep 2020 23:11:20 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://0w0.pub/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BC%95%E8%AE%BA/</guid>
+    <description><![CDATA[这是本人读编译原理的读书笔记。这篇笔记的结构就是按照书本的结构来写的。]]></description>
+</item><item>
     <title>从N 皇后问题了解回溯算法</title>
     <link>http://0w0.pub/%E4%BB%8En-%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98%E4%BA%86%E8%A7%A3%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</link>
     <pubDate>Tue, 22 Sep 2020 11:56:16 &#43;0800</pubDate>
