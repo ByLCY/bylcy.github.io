@@ -4,14 +4,7 @@
         <link>https://0w0.pub/posts/</link>
         <description>所有文章 | ByLCY Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>lcyistm@outlook.com (ByLCY)</managingEditor>
-            <webMaster>lcyistm@outlook.com (ByLCY)</webMaster><lastBuildDate>Thu, 01 Oct 2020 21:41:02 &#43;0800</lastBuildDate><atom:link href="https://0w0.pub/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Go 关键字</title>
-    <link>https://0w0.pub/go-keywords/</link>
-    <pubDate>Thu, 01 Oct 2020 21:41:02 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://0w0.pub/go-keywords/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
+            <webMaster>lcyistm@outlook.com (ByLCY)</webMaster><lastBuildDate>Wed, 30 Sep 2020 23:11:20 &#43;0800</lastBuildDate><atom:link href="https://0w0.pub/posts/" rel="self" type="application/rss+xml" /><item>
     <title>读书笔记 编译原理 第一章 引论</title>
     <link>https://0w0.pub/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BC%95%E8%AE%BA/</link>
     <pubDate>Wed, 30 Sep 2020 23:11:20 &#43;0800</pubDate>
