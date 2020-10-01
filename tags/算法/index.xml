@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>算法 - 标签 - ByLCY Blog</title>
-        <link>http://0w0.pub/tags/%E7%AE%97%E6%B3%95/</link>
+        <link>https://0w0.pub/tags/%E7%AE%97%E6%B3%95/</link>
         <description>算法 - 标签 - ByLCY Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>liaochangyu@hotmail.com (ByLCY)</managingEditor>
-            <webMaster>liaochangyu@hotmail.com (ByLCY)</webMaster><lastBuildDate>Tue, 22 Sep 2020 11:56:16 &#43;0800</lastBuildDate><atom:link href="http://0w0.pub/tags/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>lcyistm@outlook.com (ByLCY)</managingEditor>
+            <webMaster>lcyistm@outlook.com (ByLCY)</webMaster><lastBuildDate>Tue, 22 Sep 2020 11:56:16 &#43;0800</lastBuildDate><atom:link href="https://0w0.pub/tags/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
     <title>从N 皇后问题了解回溯算法</title>
-    <link>http://0w0.pub/%E4%BB%8En-%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98%E4%BA%86%E8%A7%A3%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</link>
+    <link>https://0w0.pub/%E4%BB%8En-%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98%E4%BA%86%E8%A7%A3%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</link>
     <pubDate>Tue, 22 Sep 2020 11:56:16 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://0w0.pub/%E4%BB%8En-%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98%E4%BA%86%E8%A7%A3%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</guid>
+    <guid>https://0w0.pub/%E4%BB%8En-%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98%E4%BA%86%E8%A7%A3%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</guid>
     <description><![CDATA[个人认为回溯算法就是一个不断试错，撤销、再试错的算法。本片文章将从N 皇后问题中学习回溯算法]]></description>
 </item></channel>
 </rss>

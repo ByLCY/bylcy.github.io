@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>笔记 - 标签 - ByLCY Blog</title>
-        <link>http://0w0.pub/tags/%E7%AC%94%E8%AE%B0/</link>
+        <link>https://0w0.pub/tags/%E7%AC%94%E8%AE%B0/</link>
         <description>笔记 - 标签 - ByLCY Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>liaochangyu@hotmail.com (ByLCY)</managingEditor>
-            <webMaster>liaochangyu@hotmail.com (ByLCY)</webMaster><lastBuildDate>Wed, 30 Sep 2020 23:11:20 &#43;0800</lastBuildDate><atom:link href="http://0w0.pub/tags/%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>lcyistm@outlook.com (ByLCY)</managingEditor>
+            <webMaster>lcyistm@outlook.com (ByLCY)</webMaster><lastBuildDate>Wed, 30 Sep 2020 23:11:20 &#43;0800</lastBuildDate><atom:link href="https://0w0.pub/tags/%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
     <title>读书笔记 编译原理 第一章 引论</title>
-    <link>http://0w0.pub/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BC%95%E8%AE%BA/</link>
+    <link>https://0w0.pub/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BC%95%E8%AE%BA/</link>
     <pubDate>Wed, 30 Sep 2020 23:11:20 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://0w0.pub/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BC%95%E8%AE%BA/</guid>
+    <guid>https://0w0.pub/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BC%95%E8%AE%BA/</guid>
     <description><![CDATA[这是本人读编译原理的读书笔记。这篇笔记的结构就是按照书本的结构来写的。]]></description>
 </item></channel>
 </rss>

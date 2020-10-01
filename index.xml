@@ -1,31 +1,38 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>ByLCY Blog</title>
-        <link>http://0w0.pub/</link>
+        <link>https://0w0.pub/</link>
         <description>个人博客 | 记录学习过程</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>liaochangyu@hotmail.com (ByLCY)</managingEditor>
-            <webMaster>liaochangyu@hotmail.com (ByLCY)</webMaster><lastBuildDate>Wed, 30 Sep 2020 23:11:20 &#43;0800</lastBuildDate>
-            <atom:link href="http://0w0.pub/index.xml" rel="self" type="application/rss+xml" />
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>lcyistm@outlook.com (ByLCY)</managingEditor>
+            <webMaster>lcyistm@outlook.com (ByLCY)</webMaster><lastBuildDate>Thu, 01 Oct 2020 21:41:02 &#43;0800</lastBuildDate>
+            <atom:link href="https://0w0.pub/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Go 关键字</title>
+    <link>https://0w0.pub/go-keywords/</link>
+    <pubDate>Thu, 01 Oct 2020 21:41:02 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://0w0.pub/go-keywords/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>读书笔记 编译原理 第一章 引论</title>
-    <link>http://0w0.pub/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BC%95%E8%AE%BA/</link>
+    <link>https://0w0.pub/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BC%95%E8%AE%BA/</link>
     <pubDate>Wed, 30 Sep 2020 23:11:20 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://0w0.pub/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BC%95%E8%AE%BA/</guid>
+    <guid>https://0w0.pub/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BC%95%E8%AE%BA/</guid>
     <description><![CDATA[这是本人读编译原理的读书笔记。这篇笔记的结构就是按照书本的结构来写的。]]></description>
 </item><item>
     <title>从N 皇后问题了解回溯算法</title>
-    <link>http://0w0.pub/%E4%BB%8En-%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98%E4%BA%86%E8%A7%A3%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</link>
+    <link>https://0w0.pub/%E4%BB%8En-%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98%E4%BA%86%E8%A7%A3%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</link>
     <pubDate>Tue, 22 Sep 2020 11:56:16 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://0w0.pub/%E4%BB%8En-%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98%E4%BA%86%E8%A7%A3%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</guid>
+    <guid>https://0w0.pub/%E4%BB%8En-%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98%E4%BA%86%E8%A7%A3%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</guid>
     <description><![CDATA[个人认为回溯算法就是一个不断试错，撤销、再试错的算法。本片文章将从N 皇后问题中学习回溯算法]]></description>
 </item><item>
     <title>go语言初识</title>
-    <link>http://0w0.pub/first-acquaintance-go/</link>
+    <link>https://0w0.pub/first-acquaintance-go/</link>
     <pubDate>Thu, 18 Jun 2020 10:25:39 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>http://0w0.pub/first-acquaintance-go/</guid>
+    <guid>https://0w0.pub/first-acquaintance-go/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/go%e5%88%9d%e8%af%86/go.jpg" referrerpolicy="no-referrer">
             </div>本人不才，虽然这个系列名为 go 教程，但实际上是我个人的知识回顾和学习记录]]></description>
