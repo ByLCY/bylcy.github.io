@@ -60,7 +60,7 @@ import (
 1. var
 2. const
 
-{{< style "strong{color:red;}" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
+{{< style "strong{color:red;}">}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
 
 ### 基本组件
 
