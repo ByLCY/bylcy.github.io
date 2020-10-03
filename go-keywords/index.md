@@ -60,7 +60,7 @@ import (
 1. var
 2. const
 
-{{< style "strong{color:red;}" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
+{{< style "color:red" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
 
 ### 基本组件
 
@@ -69,7 +69,7 @@ import (
 1. func
 2. return
 
-{{< style "strong{color:red;}" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
+{{< style "color:red" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
 
 ### 自定义类型
 
@@ -77,14 +77,14 @@ import (
 2. struct
 3. type
 
-{{< style "strong{color:red;}" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
+{{< style "color:red" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
 
 ### 引用类型
 
 1. map
 2. range
 
-{{< style "strong{color:red;}" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
+{{< style "color:red" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
 
 ### 流程控制
 
@@ -96,7 +96,7 @@ go是一个原生就支持并发的编程语言，这个分类中就有特别体
 2. select
 3. chan
 
-{{< style "strong{color:red;}" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
+{{< style "color:red" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
 
 ### 单任务流程控制
 
@@ -111,13 +111,14 @@ go是一个原生就支持并发的编程语言，这个分类中就有特别体
 9. fallthrough
 10. continue
 
-{{< style "strong{color:red;}" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
+{{< style "color:red" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
 
 ### 延时控制
 
 1. defer
 
-{{< style "strong{color:red;}" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
+{{< style "color:red" >}}~~[相关介绍](/)~~ **施工中**{{< /style >}}
 
-## 结语
+### 结语
+
 后续 Go 教程的的更新会按照上文的介绍来。较为简短的我就会用提示的方法直接在本篇文章中更新，较长的就另写一篇文章。
