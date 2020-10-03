@@ -4,7 +4,14 @@
         <link>https://0w0.pub/tags/go/</link>
         <description>go - 标签 - ByLCY Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>lcyistm@outlook.com (ByLCY)</managingEditor>
-            <webMaster>lcyistm@outlook.com (ByLCY)</webMaster><lastBuildDate>Thu, 18 Jun 2020 10:25:39 &#43;0800</lastBuildDate><atom:link href="https://0w0.pub/tags/go/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>lcyistm@outlook.com (ByLCY)</webMaster><lastBuildDate>Sat, 03 Oct 2020 17:21:35 &#43;0800</lastBuildDate><atom:link href="https://0w0.pub/tags/go/" rel="self" type="application/rss+xml" /><item>
+    <title>Go 关键字</title>
+    <link>https://0w0.pub/go-keywords/</link>
+    <pubDate>Sat, 03 Oct 2020 17:21:35 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://0w0.pub/go-keywords/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>go语言初识</title>
     <link>https://0w0.pub/first-acquaintance-go/</link>
     <pubDate>Thu, 18 Jun 2020 10:25:39 &#43;0800</pubDate>
