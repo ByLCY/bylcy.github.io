@@ -4,7 +4,14 @@
         <link>https://0w0.pub/tags/%E7%AE%97%E6%B3%95/</link>
         <description>算法 - 标签 - ByLCY Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>lcyistm@outlook.com (ByLCY)</managingEditor>
-            <webMaster>lcyistm@outlook.com (ByLCY)</webMaster><lastBuildDate>Tue, 22 Sep 2020 11:56:16 &#43;0800</lastBuildDate><atom:link href="https://0w0.pub/tags/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>lcyistm@outlook.com (ByLCY)</webMaster><lastBuildDate>Sun, 04 Oct 2020 16:51:26 &#43;0800</lastBuildDate><atom:link href="https://0w0.pub/tags/%E7%AE%97%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+    <title>排序算法</title>
+    <link>https://0w0.pub/sorting-algorithm/</link>
+    <pubDate>Sun, 04 Oct 2020 16:51:26 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://0w0.pub/sorting-algorithm/</guid>
+    <description><![CDATA[十大排序算法的简单总结和 go 实现]]></description>
+</item><item>
     <title>从N 皇后问题了解回溯算法</title>
     <link>https://0w0.pub/%E4%BB%8En-%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98%E4%BA%86%E8%A7%A3%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</link>
     <pubDate>Tue, 22 Sep 2020 11:56:16 &#43;0800</pubDate>

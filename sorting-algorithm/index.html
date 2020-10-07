@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>排序算法 - ByLCY Blog</title><meta name="Description" content="十大排序算法的简单总结和 go 实现"><meta property="og:title" content="排序算法" />
+<meta property="og:description" content="十大排序算法的简单总结和 go 实现" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0w0.pub/sorting-algorithm/" />
+<meta property="og:image" content="https://0w0.pub/images/sorting-algorithm/sort_algorithm.png" />
+<meta property="article:published_time" content="2020-10-04T16:51:26+08:00" />
+<meta property="article:modified_time" content="2020-10-04T16:51:26+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://0w0.pub/images/sorting-algorithm/sort_algorithm.png"/>
+
+<meta name="twitter:title" content="排序算法"/>
+<meta name="twitter:description" content="十大排序算法的简单总结和 go 实现"/>
+<meta name="application-name" content="ByLCY Blog">
+<meta name="apple-mobile-web-app-title" content="ByLCY Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/terminal.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://0w0.pub/sorting-algorithm/" /><link rel="prev" href="https://0w0.pub/go-keywords/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><meta name="google-site-verification" content="YK3Iq8B3ZY7h3PzycC4_DGRjrxHrX8FZxX6iztM6-4k" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "排序算法",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/0w0.pub\/sorting-algorithm\/"
+        },"genre": "posts","keywords": "算法, 排序算法, go","wordcount":  3395 ,
+        "url": "https:\/\/0w0.pub\/sorting-algorithm\/","datePublished": "2020-10-04T16:51:26+08:00","dateModified": "2020-10-04T16:51:26+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "ByLCY"
+            },"description": "十大排序算法的简单总结和 go 实现"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="ByLCY Blog"><span class="header-title-pre"><i class="fas fa-code"></i> </span>!0w0</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="ByLCY Blog"><span class="header-title-pre"><i class="fas fa-code"></i> </span>!0w0</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">排序算法</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ByLCY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw"></i>算法学习</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-04">2020-10-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3395 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#排序分类">排序分类</a></li>
+    <li><a href="#算法详解">算法详解</a>
+      <ul>
+        <li><a href="#插入排序">插入排序</a></li>
+        <li><a href="#希尔排序">希尔排序</a></li>
+        <li><a href="#选择排序">选择排序</a></li>
+        <li><a href="#堆排序">堆排序</a></li>
+        <li><a href="#冒泡排序">冒泡排序</a></li>
+        <li><a href="#快速排序">快速排序</a></li>
+        <li><a href="#归并排序">归并排序</a></li>
+        <li><a href="#计数排序">计数排序</a></li>
+        <li><a href="#桶排序">桶排序</a></li>
+        <li><a href="#基数排序">基数排序</a></li>
+      </ul>
+    </li>
+    <li><a href="#源代码">源代码</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="排序分类">排序分类</h2>
+<table>
+<thead>
+<tr>
+<th>排序方法</th>
+<th>时间复杂度（平均）</th>
+<th>时间复杂度（最坏）</th>
+<th>时间复杂度（最好）</th>
+<th>空间复杂度</th>
+<th>稳定性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>插入排序</td>
+<td>O(n<sup>2</sup>)</td>
+<td>O(n<sup>2</sup>)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>希尔排序</td>
+<td>O(n<sup>1.3</sup>)</td>
+<td>O(n<sup>2</sup>)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>选择排序</td>
+<td>O(n<sup>2</sup>)</td>
+<td>O(n<sup>2</sup>)</td>
+<td>O(n<sup>2</sup>)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>堆排序</td>
+<td>O(nlog<sub>2</sub>n)</td>
+<td>O(nlog<sub>2</sub>n)</td>
+<td>O(nlog<sub>2</sub>n)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>冒泡排序</td>
+<td>O(n<sup>2</sup>)</td>
+<td>O(n<sup>2</sup>)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td>O(nlog<sub>2</sub>n)</td>
+<td>O(n<sup>2</sup>)</td>
+<td>O(nlog<sub>2</sub>n)</td>
+<td>O(nlog<sub>2</sub>n)</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>O(nlog<sub>2</sub>n)</td>
+<td>O(nlog<sub>2</sub>n)</td>
+<td>O(nlog<sub>2</sub>n)</td>
+<td>O(n)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>计数排序</td>
+<td>O(n+k)</td>
+<td>O(n+k)</td>
+<td>O(n+k)</td>
+<td>O(n+k)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>桶排序</td>
+<td>O(n+k)</td>
+<td>O(n<sup>2</sup>)</td>
+<td>O(n)</td>
+<td>O(n+k)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>基数排序</td>
+<td>O(n*k)</td>
+<td>O(n*k)</td>
+<td>O(n*k)</td>
+<td>O(n+k)</td>
+<td>稳定</td>
+</tr>
+</tbody>
+</table>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>提示<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>时间复杂度：对数据的操作次数。</li>
+<li>空间复杂度：指算法会在计算机内存中占用的资源。</li>
+<li>稳定：就是指排完序后，相等的a和b的相对位置不会发生变动。</li>
+<li>不稳定：和稳定相反，排序后相等的值相对位置可能变动。</li>
+</ul>
+</div>
+        </div>
+    </div>
+<h2 id="算法详解">算法详解</h2>
+<h3 id="插入排序">插入排序</h3>
+<ol>
+<li>按顺序取出一个值a。</li>
+<li>将a和他前一个值b比较，如果a小就将b移动到a的位置上，a移动到b的位置上。</li>
+<li>重复2，直到走到比a小的值c后就将a放在c之后。</li>
+<li>重复1~3，直到数组遍历完。</li>
+</ol>
+<figure><a class="lightgallery" href="/images/sorting-algorithm/Insertion_sort.gif" title="/images/sorting-algorithm/Insertion_sort.gif" data-thumbnail="/images/sorting-algorithm/Insertion_sort.gif" data-sub-html="<h2>插入排序</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/sorting-algorithm/Insertion_sort.gif"
+            data-srcset="/images/sorting-algorithm/Insertion_sort.gif, /images/sorting-algorithm/Insertion_sort.gif 1.5x, /images/sorting-algorithm/Insertion_sort.gif 2x"
+            data-sizes="auto"
+            alt="/images/sorting-algorithm/Insertion_sort.gif" width="300px" />
+    </a><figcaption class="image-caption">插入排序</figcaption>
+    </figure>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">sorting</span>
+
+<span class="c1">// InsertionSort 插入排序
+</span><span class="c1">// @param a是待排序数组
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">InsertionSort</span><span class="p">(</span><span class="nx">a</span> <span class="p">[]</span><span class="kt">float32</span><span class="p">)</span> <span class="p">[]</span><span class="kt">float32</span> <span class="p">{</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="nx">key</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+		<span class="nx">j</span> <span class="o">:=</span> <span class="nx">i</span> <span class="o">-</span> <span class="mi">1</span>
+		<span class="k">for</span> <span class="p">;</span> <span class="nx">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">key</span> <span class="p">&lt;</span> <span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">];</span> <span class="nx">j</span><span class="o">--</span> <span class="p">{</span>
+			<span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span>
+		<span class="p">}</span>
+		<span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">key</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">a</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="希尔排序">希尔排序</h3>
+<p>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，具体算法描述：</p>
+<ul>
+<li>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1。</li>
+<li>按增量序列个数k，对序列进行k 趟排序。</li>
+<li>每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</li>
+</ul>
+<figure><a class="lightgallery" href="/images/sorting-algorithm/shellsort.gif" title="/images/sorting-algorithm/shellsort.gif" data-thumbnail="/images/sorting-algorithm/shellsort.gif" data-sub-html="<h2>希尔排序</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/sorting-algorithm/shellsort.gif"
+            data-srcset="/images/sorting-algorithm/shellsort.gif, /images/sorting-algorithm/shellsort.gif 1.5x, /images/sorting-algorithm/shellsort.gif 2x"
+            data-sizes="auto"
+            alt="/images/sorting-algorithm/shellsort.gif" width="300px" />
+    </a><figcaption class="image-caption">希尔排序</figcaption>
+    </figure>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">sorting</span>
+
+<span class="c1">// ShellSort 希尔排序
+</span><span class="c1">// @param array:待排序数组
+</span><span class="c1">// 对应笔记 http://0w0.pub/sorting-algorithm/#希尔排序
+</span><span class="c1">// 本例选择的步长为 N/2^k,目前的最佳步长为2^p3^q https://oeis.org/A003586
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">ShellSort</span><span class="p">(</span><span class="nx">array</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">n</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">n</span> <span class="p">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
+		<span class="k">return</span>
+	<span class="p">}</span>
+	<span class="nx">key</span> <span class="o">:=</span> <span class="nx">n</span> <span class="o">/</span> <span class="mi">2</span>
+	<span class="k">for</span> <span class="nx">key</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+		<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="nx">key</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+			<span class="nx">j</span> <span class="o">:=</span> <span class="nx">i</span>
+			<span class="k">for</span> <span class="nx">j</span> <span class="o">&gt;=</span> <span class="nx">key</span> <span class="o">&amp;&amp;</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">&lt;</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="o">-</span><span class="nx">key</span><span class="p">]</span> <span class="p">{</span>
+				<span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="o">-</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="o">-</span><span class="nx">key</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span>
+				<span class="nx">j</span> <span class="p">=</span> <span class="nx">j</span> <span class="o">-</span> <span class="nx">key</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+		<span class="nx">key</span> <span class="p">=</span> <span class="nx">key</span> <span class="o">/</span> <span class="mi">2</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="选择排序">选择排序</h3>
+<p>选择排序是一种比较直观的排序方法。首先从待排序数组中按顺序拿出一个数，默认它为最大（小），然后和后面比较。如果遇到比这个数更大（小）的就交换位置。重复操作直到遍历完数组。</p>
+<figure><a class="lightgallery" href="/images/sorting-algorithm/Selection_sort.gif" title="/images/sorting-algorithm/Selection_sort.gif" data-thumbnail="/images/sorting-algorithm/Selection_sort.gif" data-sub-html="<h2>选择排序</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/sorting-algorithm/Selection_sort.gif"
+            data-srcset="/images/sorting-algorithm/Selection_sort.gif, /images/sorting-algorithm/Selection_sort.gif 1.5x, /images/sorting-algorithm/Selection_sort.gif 2x"
+            data-sizes="auto"
+            alt="/images/sorting-algorithm/Selection_sort.gif" width="500px" />
+    </a><figcaption class="image-caption">选择排序</figcaption>
+    </figure>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Go" data-lang="Go"><span class="kn">package</span> <span class="nx">sorting</span>
+
+<span class="c1">// SelectionSort 选择排序
+</span><span class="c1">// @param array:待排序数组
+</span><span class="c1">// 对应笔记 https://0w0.pub/sorting-algorithm/#选择排序
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">SelectionSort</span><span class="p">(</span><span class="nx">array</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">n</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span>
+	<span class="nx">index</span> <span class="o">:=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="nx">index</span> <span class="p">=</span> <span class="nx">i</span>
+		<span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="nx">array</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="p">&gt;</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">{</span>
+				<span class="nx">index</span> <span class="p">=</span> <span class="nx">j</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+		<span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="p">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">index</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">array</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="堆排序">堆排序</h3>
+<p>堆排序是利用<code>堆</code>这种数据结构进行排序的算法。</p>
+<p>通常堆是通过一维数组来实现的。在数组起始位置为0的情形中：</p>
+<ul>
+<li>父节点 i 的左子节点在位置 2i+1。</li>
+<li>父节点 i 的右子节点在位置 2i+2。</li>
+<li>子节点 i 的父节点在位置 floor((i-1)/2)。floor表示向下取整。</li>
+</ul>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>堆</strong>（英语：Heap）是<a href="https://zh.wikipedia.org/wiki/%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%a7%91%e5%ad%a6" target="_blank" rel="noopener noreffer">计算机科学</a>中的一种特别的<a href="https://zh.wikipedia.org/wiki/%e5%ae%8c%e5%85%a8%e4%ba%8c%e5%8f%89%e6%a0%91" target="_blank" rel="noopener noreffer">完全二叉树</a>。若是满足以下特性，即可称为堆：“给定堆中任意<a href="https://zh.wikipedia.org/wiki/%e7%af%80%e9%bb%9e" target="_blank" rel="noopener noreffer">节点</a>P和C，若P是C的母节点，那么P的值会小于等于（或大于等于）C的值”。若母节点的值恒<strong>小于等于</strong>子节点的值，此堆称为<strong>最小堆</strong>（min heap）；反之，若母节点的值恒<strong>大于等于</strong>子节点的值，此堆称为<strong>最大堆</strong>（max heap）。在堆中最顶端的那一个节点，称作<strong>根节点</strong>（root node），根节点本身没有<strong>母节点</strong>（parent node）。<sup>4</sup></div>
+        </div>
+    </div>
+<p>堆排序的具体用法：</p>
+<ol>
+<li>构建最大（小）堆。</li>
+<li>将root节点和最后一个节点交换。</li>
+<li>树的大小减一后重新构建最大（小）堆。</li>
+<li>重复2~3直到整个树操作完成</li>
+</ol>
+<figure><a class="lightgallery" href="/images/sorting-algorithm/Heapsort.gif" title="/images/sorting-algorithm/Heapsort.gif" data-thumbnail="/images/sorting-algorithm/Heapsort.gif" data-sub-html="<h2>堆排序</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/sorting-algorithm/Heapsort.gif"
+            data-srcset="/images/sorting-algorithm/Heapsort.gif, /images/sorting-algorithm/Heapsort.gif 1.5x, /images/sorting-algorithm/Heapsort.gif 2x"
+            data-sizes="auto"
+            alt="/images/sorting-algorithm/Heapsort.gif" width="500px" />
+    </a><figcaption class="image-caption">堆排序</figcaption>
+    </figure>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Go" data-lang="Go"><span class="kn">package</span> <span class="nx">sorting</span>
+
+<span class="c1">// Heapsort 堆排序
+</span><span class="c1">// @param array:待排序数组
+</span><span class="c1">// 对应笔记 http://0w0.pub/sorting-algorithm/#堆排序
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Heapsort</span><span class="p">(</span><span class="nx">array</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">n</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="nx">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span> <span class="p">{</span>
+		<span class="nf">MaxHeap</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="nx">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span> <span class="p">{</span>
+		<span class="nx">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+		<span class="nx">n</span><span class="o">--</span>
+		<span class="nf">MaxHeap</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">array</span>
+<span class="p">}</span>
+
+<span class="c1">// MaxHeap 构建最大堆
+</span><span class="c1">// @param array:待构成的数组
+</span><span class="c1">// @param i:第i个子树
+</span><span class="c1">// @param n:数组长度
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">MaxHeap</span><span class="p">(</span><span class="nx">array</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">left</span> <span class="o">:=</span> <span class="mi">2</span><span class="o">*</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span>
+	<span class="nx">right</span> <span class="o">:=</span> <span class="mi">2</span><span class="o">*</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">2</span>
+	<span class="nx">max</span> <span class="o">:=</span> <span class="nx">i</span> <span class="c1">// 最大值的下标
+</span><span class="c1"></span>
+	<span class="k">if</span> <span class="nx">left</span> <span class="p">&lt;</span> <span class="nx">n</span> <span class="o">&amp;&amp;</span> <span class="nx">array</span><span class="p">[</span><span class="nx">left</span><span class="p">]</span> <span class="p">&gt;</span> <span class="nx">array</span><span class="p">[</span><span class="nx">max</span><span class="p">]</span> <span class="p">{</span>
+		<span class="nx">max</span> <span class="p">=</span> <span class="nx">left</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="nx">right</span> <span class="p">&lt;</span> <span class="nx">n</span> <span class="o">&amp;&amp;</span> <span class="nx">array</span><span class="p">[</span><span class="nx">right</span><span class="p">]</span> <span class="p">&gt;</span> <span class="nx">array</span><span class="p">[</span><span class="nx">max</span><span class="p">]</span> <span class="p">{</span>
+		<span class="nx">max</span> <span class="p">=</span> <span class="nx">right</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="nx">max</span> <span class="o">!=</span> <span class="nx">i</span> <span class="p">{</span>
+		<span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">max</span><span class="p">]</span> <span class="p">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">max</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+		<span class="nf">MaxHeap</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">max</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="冒泡排序">冒泡排序</h3>
+<ol>
+<li>比较相邻两个元素，如果前一个比后一个大（小）就交换。</li>
+<li>对每个相邻元素执行一遍，最后一个就会是最大（小）的。</li>
+<li>重复执行1~2，但是每轮缩小一个范围。</li>
+</ol>
+<figure><a class="lightgallery" href="/images/sorting-algorithm/BubbleSort.gif" title="/images/sorting-algorithm/BubbleSort.gif" data-thumbnail="/images/sorting-algorithm/BubbleSort.gif" data-sub-html="<h2>冒泡排序</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/sorting-algorithm/BubbleSort.gif"
+            data-srcset="/images/sorting-algorithm/BubbleSort.gif, /images/sorting-algorithm/BubbleSort.gif 1.5x, /images/sorting-algorithm/BubbleSort.gif 2x"
+            data-sizes="auto"
+            alt="/images/sorting-algorithm/BubbleSort.gif" width="500px" />
+    </a><figcaption class="image-caption">冒泡排序</figcaption>
+    </figure>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Go" data-lang="Go"><span class="kn">package</span> <span class="nx">sorting</span>
+
+<span class="c1">// BubbleSort 插入排序
+</span><span class="c1">// @param array是待排序数组
+</span><span class="c1">// 对应笔记 http://0w0.pub/sorting-algorithm/#冒泡排序
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">BubbleSort</span><span class="p">(</span><span class="nx">array</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">n</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="nx">i</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">&gt;</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="p">{</span>
+				<span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">array</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="快速排序">快速排序</h3>
+<ol>
+<li>选出一个区间。</li>
+<li>选出一个基准。</li>
+<li>将大于基准的放在右边，小于基准的放在左边。</li>
+<li>缩小区间。</li>
+<li>重复1~4，直到区间为1。</li>
+</ol>
+<figure><a class="lightgallery" href="/images/sorting-algorithm/QuickSort.gif" title="/images/sorting-algorithm/QuickSort.gif" data-thumbnail="/images/sorting-algorithm/QuickSort.gif" data-sub-html="<h2>快速排序</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/sorting-algorithm/QuickSort.gif"
+            data-srcset="/images/sorting-algorithm/QuickSort.gif, /images/sorting-algorithm/QuickSort.gif 1.5x, /images/sorting-algorithm/QuickSort.gif 2x"
+            data-sizes="auto"
+            alt="/images/sorting-algorithm/QuickSort.gif" width="500px" />
+    </a><figcaption class="image-caption">快速排序</figcaption>
+    </figure>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Go" data-lang="Go"><span class="kn">package</span> <span class="nx">sorting</span>
+
+<span class="c1">// QuickSort 快速排序
+</span><span class="c1">// @param array是待排序数组
+</span><span class="c1">// 对应笔记 http://0w0.pub/sorting-algorithm/#快速排序
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">QuickSort</span><span class="p">(</span><span class="nx">array</span> <span class="p">[]</span><span class="kt">int</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span> <span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="nx">left</span> <span class="o">&gt;=</span> <span class="nx">right</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nx">array</span>
+	<span class="p">}</span>
+	<span class="nx">l</span><span class="p">,</span> <span class="nx">r</span> <span class="o">:=</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span>
+	<span class="nx">p</span> <span class="o">:=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">l</span><span class="p">]</span>
+	<span class="k">for</span> <span class="nx">l</span> <span class="p">&lt;</span> <span class="nx">r</span> <span class="p">{</span>
+		<span class="k">for</span> <span class="nx">l</span> <span class="p">&lt;</span> <span class="nx">r</span> <span class="o">&amp;&amp;</span> <span class="nx">array</span><span class="p">[</span><span class="nx">r</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="nx">p</span> <span class="p">{</span>
+			<span class="nx">r</span><span class="o">--</span>
+		<span class="p">}</span>
+		<span class="k">if</span> <span class="nx">l</span> <span class="p">&lt;</span> <span class="nx">r</span> <span class="p">{</span>
+			<span class="nx">array</span><span class="p">[</span><span class="nx">l</span><span class="p">]</span> <span class="p">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">r</span><span class="p">]</span>
+			<span class="nx">l</span><span class="o">++</span>
+		<span class="p">}</span>
+		<span class="k">for</span> <span class="nx">l</span> <span class="p">&lt;</span> <span class="nx">r</span> <span class="o">&amp;&amp;</span> <span class="nx">array</span><span class="p">[</span><span class="nx">l</span><span class="p">]</span> <span class="p">&lt;</span> <span class="nx">p</span> <span class="p">{</span>
+			<span class="nx">l</span><span class="o">++</span>
+		<span class="p">}</span>
+		<span class="k">if</span> <span class="nx">l</span> <span class="p">&lt;</span> <span class="nx">r</span> <span class="p">{</span>
+			<span class="nx">array</span><span class="p">[</span><span class="nx">r</span><span class="p">]</span> <span class="p">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">l</span><span class="p">]</span>
+			<span class="nx">r</span><span class="o">--</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="nx">array</span><span class="p">[</span><span class="nx">l</span><span class="p">]</span> <span class="p">=</span> <span class="nx">p</span>
+	<span class="nf">QuickSort</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">left</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span>
+	<span class="nf">QuickSort</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">array</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="归并排序">归并排序</h3>
+<ol>
+<li>将待排序数组划分成小份数组。</li>
+<li>排序小数组。</li>
+<li>合并小数组。</li>
+<li>重复2~3直到全部数组都被排序。</li>
+</ol>
+<figure><a class="lightgallery" href="/images/sorting-algorithm/merge_sort.gif" title="/images/sorting-algorithm/merge_sort.gif" data-thumbnail="/images/sorting-algorithm/merge_sort.gif" data-sub-html="<h2>归并排序</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/sorting-algorithm/merge_sort.gif"
+            data-srcset="/images/sorting-algorithm/merge_sort.gif, /images/sorting-algorithm/merge_sort.gif 1.5x, /images/sorting-algorithm/merge_sort.gif 2x"
+            data-sizes="auto"
+            alt="/images/sorting-algorithm/merge_sort.gif" width="500px" />
+    </a><figcaption class="image-caption">归并排序</figcaption>
+    </figure>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Go" data-lang="Go"><span class="kn">package</span> <span class="nx">sorting</span>
+
+<span class="c1">// MergeSort 归并排序
+</span><span class="c1">// @param array是待排序数组
+</span><span class="c1">// 对应笔记 http://0w0.pub/sorting-algorithm/#归并排序
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">MergeSort</span><span class="p">(</span><span class="nx">array</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">n</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">n</span> <span class="p">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nx">array</span>
+	<span class="p">}</span>
+	<span class="nx">mid</span> <span class="o">:=</span> <span class="nx">n</span> <span class="o">/</span> <span class="mi">2</span>
+	<span class="nx">left</span> <span class="o">:=</span> <span class="nf">MergeSort</span><span class="p">(</span><span class="nx">array</span><span class="p">[:</span><span class="nx">mid</span><span class="p">])</span>
+	<span class="nx">right</span> <span class="o">:=</span> <span class="nf">MergeSort</span><span class="p">(</span><span class="nx">array</span><span class="p">[</span><span class="nx">mid</span><span class="p">:])</span>
+	<span class="k">return</span> <span class="nf">merge</span><span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">merge</span><span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">right</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">array</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">left</span><span class="p">)</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="nx">right</span><span class="p">))</span>
+	<span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">,</span> <span class="nx">index</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="nx">left</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">&gt;</span> <span class="nx">right</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">{</span>
+			<span class="nx">array</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="p">=</span> <span class="nx">right</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span>
+			<span class="nx">j</span><span class="o">++</span>
+			<span class="nx">index</span><span class="o">++</span>
+			<span class="k">if</span> <span class="nx">j</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+				<span class="nb">copy</span><span class="p">(</span><span class="nx">array</span><span class="p">[</span><span class="nx">index</span><span class="p">:],</span> <span class="nx">left</span><span class="p">[</span><span class="nx">i</span><span class="p">:])</span>
+				<span class="k">break</span>
+			<span class="p">}</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="nx">array</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="p">=</span> <span class="nx">left</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+			<span class="nx">i</span><span class="o">++</span>
+			<span class="nx">index</span><span class="o">++</span>
+			<span class="k">if</span> <span class="nx">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="nx">left</span><span class="p">)</span> <span class="p">{</span>
+				<span class="nb">copy</span><span class="p">(</span><span class="nx">array</span><span class="p">[</span><span class="nx">index</span><span class="p">:],</span> <span class="nx">right</span><span class="p">[</span><span class="nx">j</span><span class="p">:])</span>
+				<span class="k">break</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">array</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="计数排序">计数排序</h3>
+<ol>
+<li>找出排序范围的最大值和最小值。</li>
+<li>统计每个值出现的个数。</li>
+<li>从小到大填充数组。</li>
+</ol>
+<figure><a class="lightgallery" href="/images/sorting-algorithm/counting_sort.gif" title="/images/sorting-algorithm/counting_sort.gif" data-thumbnail="/images/sorting-algorithm/counting_sort.gif" data-sub-html="<h2>计数排序</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/sorting-algorithm/counting_sort.gif"
+            data-srcset="/images/sorting-algorithm/counting_sort.gif, /images/sorting-algorithm/counting_sort.gif 1.5x, /images/sorting-algorithm/counting_sort.gif 2x"
+            data-sizes="auto"
+            alt="/images/sorting-algorithm/counting_sort.gif" width="500px" />
+    </a><figcaption class="image-caption">计数排序</figcaption>
+    </figure>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Go" data-lang="Go"><span class="kn">package</span> <span class="nx">sorting</span>
+
+<span class="c1">// CountingSort 计数排序
+</span><span class="c1">// @param array:待排序数组
+</span><span class="c1">// 对应笔记 https://0w0.pub/sorting-algorithm/#计数排序
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">CountingSort</span><span class="p">(</span><span class="nx">array</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">min</span> <span class="o">:=</span> <span class="nx">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="nx">max</span> <span class="o">:=</span> <span class="nx">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="nx">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">array</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="nx">min</span> <span class="p">&gt;</span> <span class="nx">v</span> <span class="p">{</span>
+			<span class="nx">min</span> <span class="p">=</span> <span class="nx">v</span>
+		<span class="p">}</span>
+		<span class="k">if</span> <span class="nx">max</span> <span class="p">&lt;</span> <span class="nx">v</span> <span class="p">{</span>
+			<span class="nx">max</span> <span class="p">=</span> <span class="nx">v</span>
+		<span class="p">}</span>
+		<span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="nx">v</span><span class="p">];</span> <span class="p">!</span><span class="nx">ok</span> <span class="p">{</span>
+			<span class="nx">m</span><span class="p">[</span><span class="nx">v</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span>
+			<span class="k">continue</span>
+		<span class="p">}</span>
+		<span class="nx">m</span><span class="p">[</span><span class="nx">v</span><span class="p">]</span><span class="o">++</span>
+	<span class="p">}</span>
+	<span class="nx">array</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="k">for</span> <span class="p">;</span> <span class="nx">min</span> <span class="o">&lt;=</span> <span class="nx">max</span><span class="p">;</span> <span class="nx">min</span><span class="o">++</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="nx">num</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">m</span><span class="p">[</span><span class="nx">min</span><span class="p">];</span> <span class="nx">ok</span> <span class="p">{</span>
+			<span class="k">for</span> <span class="p">;</span> <span class="nx">num</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">num</span><span class="o">--</span> <span class="p">{</span>
+				<span class="nx">array</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">min</span><span class="p">)</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">array</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="桶排序">桶排序</h3>
+<ol>
+<li>将数据分到预备的“桶”中。</li>
+<li>对桶中的数据进行排序（可以使用桶排序递归）。</li>
+<li>将数据放回原序列。</li>
+</ol>
+<figure><a class="lightgallery" href="/images/sorting-algorithm/Bucket_sort_1.svg" title="/images/sorting-algorithm/Bucket_sort_1.svg" data-thumbnail="/images/sorting-algorithm/Bucket_sort_1.svg" data-sub-html="<h2>元素分配到桶</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/sorting-algorithm/Bucket_sort_1.svg"
+            data-srcset="/images/sorting-algorithm/Bucket_sort_1.svg, /images/sorting-algorithm/Bucket_sort_1.svg 1.5x, /images/sorting-algorithm/Bucket_sort_1.svg 2x"
+            data-sizes="auto"
+            alt="/images/sorting-algorithm/Bucket_sort_1.svg" width="400px" />
+    </a><figcaption class="image-caption">元素分配到桶</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/images/sorting-algorithm/Bucket_sort_2.svg" title="/images/sorting-algorithm/Bucket_sort_2.svg" data-thumbnail="/images/sorting-algorithm/Bucket_sort_2.svg" data-sub-html="<h2>排序桶中元素</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/sorting-algorithm/Bucket_sort_2.svg"
+            data-srcset="/images/sorting-algorithm/Bucket_sort_2.svg, /images/sorting-algorithm/Bucket_sort_2.svg 1.5x, /images/sorting-algorithm/Bucket_sort_2.svg 2x"
+            data-sizes="auto"
+            alt="/images/sorting-algorithm/Bucket_sort_2.svg" width="400px" />
+    </a><figcaption class="image-caption">排序桶中元素</figcaption>
+    </figure>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Go" data-lang="Go"><span class="kn">package</span> <span class="nx">sorting</span>
+
+<span class="c1">// BucketSort 桶排序
+</span><span class="c1">// @param array:待排序数组
+</span><span class="c1">// 对应笔记 https://0w0.pub/sorting-algorithm/#桶排序
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">BucketSort</span><span class="p">(</span><span class="nx">array</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">buckets</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">][]</span><span class="kt">int</span><span class="p">)</span>
+	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">array</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="nx">bucket</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">buckets</span><span class="p">[</span><span class="nx">v</span><span class="o">/</span><span class="mi">10</span><span class="p">];</span> <span class="nx">ok</span> <span class="p">{</span>
+			<span class="nx">bucket</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">bucket</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+			<span class="k">continue</span>
+		<span class="p">}</span>
+		<span class="nx">buckets</span><span class="p">[</span><span class="nx">v</span><span class="o">/</span><span class="mi">10</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="nx">v</span><span class="p">}</span>
+	<span class="p">}</span>
+	<span class="nx">record</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// 记录桶详情
+</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">bucket</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">buckets</span> <span class="p">{</span>
+		<span class="nx">record</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">record</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+		<span class="nx">bucket</span> <span class="p">=</span> <span class="nf">Heapsort</span><span class="p">(</span><span class="nx">bucket</span><span class="p">)</span> <span class="c1">// 使用堆排序对桶内元素排序
+</span><span class="c1"></span>	<span class="p">}</span>
+	<span class="nx">record</span> <span class="p">=</span> <span class="nf">Heapsort</span><span class="p">(</span><span class="nx">record</span><span class="p">)</span> <span class="c1">// map是不保证遍历顺序的
+</span><span class="c1"></span>	<span class="nx">array</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">record</span> <span class="p">{</span>
+		<span class="nx">array</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">buckets</span><span class="p">[</span><span class="nx">v</span><span class="p">]</span><span class="o">...</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">array</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="基数排序">基数排序</h3>
+<ol>
+<li>找到序列的最大值。</li>
+<li>按照当前最低位（第一遍是个位、第二遍是十位）进行放置。</li>
+<li>按照顺序放入原序列。</li>
+<li>重复2~3，直到所有位都遍历完毕。</li>
+</ol>
+<figure><a class="lightgallery" href="/images/sorting-algorithm/radix_sort.gif" title="/images/sorting-algorithm/radix_sort.gif" data-thumbnail="/images/sorting-algorithm/radix_sort.gif" data-sub-html="<h2>基数排序</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/sorting-algorithm/radix_sort.gif"
+            data-srcset="/images/sorting-algorithm/radix_sort.gif, /images/sorting-algorithm/radix_sort.gif 1.5x, /images/sorting-algorithm/radix_sort.gif 2x"
+            data-sizes="auto"
+            alt="/images/sorting-algorithm/radix_sort.gif" width="500px" />
+    </a><figcaption class="image-caption">基数排序</figcaption>
+    </figure>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Go" data-lang="Go"><span class="kn">package</span> <span class="nx">sorting</span>
+
+<span class="c1">// RadixSort 基数排序
+</span><span class="c1">// @param array:待排序数组
+</span><span class="c1">// 对应笔记 https://0w0.pub/sorting-algorithm/#基数排序
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">RadixSort</span><span class="p">(</span><span class="nx">array</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">max</span> <span class="o">:=</span> <span class="nx">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">array</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="nx">max</span> <span class="p">&lt;</span> <span class="nx">v</span> <span class="p">{</span>
+			<span class="nx">max</span> <span class="p">=</span> <span class="nx">v</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="nx">radix</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([][]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
+	<span class="k">for</span> <span class="nx">max</span><span class="o">/</span><span class="nx">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+		<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">num</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">array</span> <span class="p">{</span>
+			<span class="nx">radix</span><span class="p">[</span><span class="nx">num</span><span class="o">/</span><span class="nx">i</span><span class="o">%</span><span class="mi">10</span><span class="p">]</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">radix</span><span class="p">[</span><span class="nx">num</span><span class="o">/</span><span class="nx">i</span><span class="o">%</span><span class="mi">10</span><span class="p">],</span> <span class="nx">num</span><span class="p">)</span>
+		<span class="p">}</span>
+		<span class="nx">array</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+			<span class="nx">array</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">radix</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">...</span><span class="p">)</span>
+			<span class="nx">radix</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">}</span>
+		<span class="nx">i</span> <span class="o">*=</span> <span class="mi">10</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">array</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="源代码">源代码</h2>
+<p>此节源代码我都放在了本人的GitHub上，可<a href="https://github.com/ByLCY/algorithm/tree/master/sorting" target="_blank" rel="noopener noreffer">点此</a>直接访问。</p>
+<h2 id="参考文献">参考文献</h2>
+<p>[1] 维基百科.Sorting algorithm[DB/OL]. <a href="https://en.wikipedia.org/wiki/Insertion_sort#/media/File:Insertion_sort.gif">https://en.wikipedia.org/wiki/Insertion_sort#/media/File:Insertion_sort.gif</a> ,2011-11&ndash;28/2020-10-04</p>
+<p>[2] 维基百科.Shellsort[DB/OL]. <a href="https://en.wikipedia.org/wiki/Shellsort#/media/File:Sorting_shellsort_anim.gif">https://en.wikipedia.org/wiki/Shellsort#/media/File:Sorting_shellsort_anim.gif</a> ,2014-09&ndash;12/2020-10-04</p>
+<p>[3] 一像素.十大经典排序算法（动图演示）[DB/OL]. <a href="https://www.cnblogs.com/onepixel/articles/7674659.html">https://www.cnblogs.com/onepixel/articles/7674659.html</a> , 2017-10-15/2020-10-04</p>
+<p>[4] 维基百科.堆[DB/OL]. <a href="https://zh.wikipedia.org/wiki/">https://zh.wikipedia.org/wiki/</a>堆積 ,2020-08&ndash;15/2020-10-04</p>
+<p>[5] 维基百科.快速排序. <a href="https://zh.wikipedia.org/wiki/">https://zh.wikipedia.org/wiki/</a>快速排序#/media/File:Sorting_quicksort_anim.gif , 2006-06-19/2020-10-04</p>
+<p>[6] 维基百科.桶排序. <a href="https://zh.wikipedia.org/wiki/%E6%A1%B6%E6%8E%92%E5%BA%8F">https://zh.wikipedia.org/wiki/%E6%A1%B6%E6%8E%92%E5%BA%8F</a> , 2006-09-11/2020-10-04</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-10-04</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/sorting-algorithm/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>,&nbsp;<a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">排序算法</a>,&nbsp;<a href="/tags/go/">go</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/go-keywords/" class="prev" rel="prev" title="Go 关键字"><i class="fas fa-angle-left fa-fw"></i>Go 关键字</a></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ByLCY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"pathname","label":"","lightTheme":"github-light","repo":"ByLCY/bylcy.github.io"}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
